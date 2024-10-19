@@ -34,6 +34,50 @@ public class Socio {
         this.email = dados.email();
         this.carteirinha = dados.carteirinha();
         this.categoria = dados.categoria();
-        this.endereco = new Endereco(dados.endereco());
+       this.endereco = new Endereco(dados.endereco());
     }
+
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getCarteirinha() {
+        return carteirinha;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void atualizarInformacoesSocio(DadosAtualizacaoSocio dados) {
+        if (dados.nome()!= null){
+            this.nome = dados.nome();
+        }
+        if (dados.telefone()!= null){
+            this.telefone = dados.telefone();
+        }
+        if (dados.endereco()!= null){
+            this.endereco.atualizarInformacoesEndereco(dados.endereco());
+        }
+    }
+
+
 }
