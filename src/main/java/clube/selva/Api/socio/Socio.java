@@ -21,6 +21,7 @@ public class Socio {
     private String telefone;
     private String email;
     private String carteirinha;
+    private  boolean ativo;
 
     @Enumerated(EnumType.STRING)
     private Categoria categoria;
@@ -29,6 +30,7 @@ public class Socio {
     private Endereco endereco;
 
     public Socio(DadosCadastroSocio dados) {
+        this.ativo = true;
         this.nome = dados.nome();
         this.telefone = dados.telefone();
         this.email = dados.email();
@@ -67,6 +69,18 @@ public class Socio {
         return endereco;
     }
 
+    public boolean isAtivo() {
+        return ativo;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+    /*
     public void atualizarInformacoesSocio(DadosAtualizacaoSocio dados) {
         if (dados.nome()!= null){
             this.nome = dados.nome();
@@ -77,7 +91,22 @@ public class Socio {
         if (dados.endereco()!= null){
             this.endereco.atualizarInformacoesEndereco(dados.endereco());
         }
+    }*/
+    public Socio atualizarInformacoesSocio( DadosAtualizacaoSocio dados) {
+        if (dados.nome()!= null) {
+            this.setNome(dados.nome());
+        }
+        if (dados.telefone()!= null) {
+            this.setTelefone(dados.telefone());
+        }
+
+         return this;
     }
 
 
+
+
+    public void desativar() {
+        this.ativo = false;
+    }
 }
